@@ -1,0 +1,170 @@
+{
+    "Grid": {
+        "Cells": [
+            {
+                "key": "id",
+                "name": "Id",
+                "IsSortable": true,
+                "IsDraggable": true
+            },
+            {
+                "key": "title",
+                "name": "Title",
+                "IsSortable": true,
+                "IsDraggable": true
+            },
+            {
+                "key": "emailid",
+                "name": "email Id"
+            },
+            {
+                "key": "phonenumber",
+                "name": "phone number",
+                "IsSortable": true,
+                "IsDraggable": true
+            },
+            {
+                "key": "count",
+                "name": "Count"
+            },
+            {
+                "key": "rowactions",
+                "name": "Actions"
+            }
+        ]
+    },
+    "Data": {
+        "Rows": [
+            {
+                "id": 0,
+                "title": "James",
+                "emailid": "James@crmnext.com",
+                "phonenumber": 9898954754,
+                "count": 1,
+                "rowactions": "Edit"
+            },
+            {
+                "id": 2,
+                "title": "vivid",
+                "emailid": "vivid@crmnext.com",
+                "phonenumber": 9898954712,
+                "count": 2,
+                "rowactions": "Edit"
+            },
+            {
+                "id": 3,
+                "title": "Smith",
+                "emailid": "smiths@crmnext.com",
+                "phonenumber": 8898954754,
+                "count": 3,
+                "rowactions": "Edit"
+            },
+            {
+                "id": 4,
+                "title": "Allen",
+                "emailid": "allen@crmnext.com",
+                "phonenumber": 7898954754,
+                "count": 4,
+                "rowactions": "Edit"
+            },
+            {
+                "id": 5,
+                "title": "James",
+                "emailid": "James@crmnext.com",
+                "phonenumber": 9898954754,
+                "count": 1,
+                "rowactions": "Edit"
+            },
+            {
+                "id": 6,
+                "title": "vivid",
+                "emailid": "vivid@crmnext.com",
+                "phonenumber": 9898954712,
+                "count": 2,
+                "rowactions": "Edit"
+            },
+            {
+                "id": 7,
+                "title": "Smith",
+                "emailid": "smiths@crmnext.com",
+                "phonenumber": 8898954754,
+                "count": 3,
+                "rowactions": "Edit"
+            },
+            {
+                "id": 8,
+                "title": "Allen",
+                "emailid": "allen@crmnext.com",
+                "phonenumber": 7898954754,
+                "count": 4,
+                "rowactions": "Edit"
+            },
+            {
+                "id": 9,
+                "title": "James",
+                "emailid": "James@crmnext.com",
+                "phonenumber": 9898954754,
+                "count": 1,
+                "rowactions": "Edit"
+            },
+            {
+                "id": 10,
+                "title": "vivid",
+                "emailid": "vivid@crmnext.com",
+                "phonenumber": 9898954712,
+                "count": 2,
+                "rowactions": "Edit"
+            },
+            {
+                "id": 11,
+                "title": "Smith",
+                "emailid": "smiths@crmnext.com",
+                "phonenumber": 8898954754,
+                "count": 3,
+                "rowactions": "Edit"
+            },
+            {
+                "id": 12,
+                "title": "Allen",
+                "emailid": "allen@crmnext.com",
+                "phonenumber": 7898954754,
+                "count": 4,
+                "rowactions": "Edit"
+            },
+            {
+                "id": 13,
+                "title": "James",
+                "emailid": "James@crmnext.com",
+                "phonenumber": 9898954754,
+                "count": 1,
+                "rowactions": "Edit"
+            },
+            {
+                "id": 14,
+                "title": "vivid",
+                "emailid": "vivid@crmnext.com",
+                "phonenumber": 9898954712,
+                "count": 2,
+                "rowactions": "Edit"
+            },
+            {
+                "id": 15,
+                "title": "Smith",
+                "emailid": "smiths@crmnext.com",
+                "phonenumber": 8898954754,
+                "count": 3,
+                "rowactions": "Edit"
+            },
+            {
+                "id": 16,
+                "title": "Allen",
+                "emailid": "allen@crmnext.com",
+                "phonenumber": 7898954754,
+                "count": 4,
+                "rowactions": "Edit"
+            }
+        ]
+    },
+   
+    "IsLoaded": false
+}

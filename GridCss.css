@@ -1,0 +1,430 @@
+@import url('https://fonts.googleapis.com/css?family=Muli:300,400,600,700');
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'Muli', sans-serif;
+    font-size: 13px;
+}
+
+.crmGridContainer {
+    padding: 20px;
+    width: 100%;
+    overflow: auto;
+}
+
+.crmGrid {
+    width: 100%;
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+
+.tableContainer {
+    width: 100%;
+    overflow: auto;
+    border: 1px solid #dddbda;
+}
+
+.crmGrid thead tr th {
+    border: 1px solid #dddbda;
+    padding: 0px 8px;
+    font-size: 13px;
+    text-transform: capitalize;
+    text-align: left;
+    line-height: 20px;
+    background: #fafaf9;
+    cursor: pointer;
+    min-width: 100px;
+    border-left: 0;
+    border-top: 0;
+    border-right: 0;
+}
+
+.crmGrid thead tr th:last-child {
+    border-right: 0;
+}
+
+.crmGrid thead tr th:hover {
+    background: #fff;
+}
+
+.crmGrid tbody tr td {
+    border: 1px solid #dddbda;
+    padding: 4px 8px;
+    font-size: 13px;
+    text-transform: capitalize;
+    text-align: left;
+    line-height: 20px;
+    border-left: 0;
+    border-top: 0;
+    border-right: 0;
+}
+
+.crmGrid tbody tr td:last-child {
+    border-right: 0;
+}
+
+.crmGrid tbody tr:hover td {
+    background: #f9f9f9;
+}
+
+.action-hover {
+    display: flex;
+    align-items: center;
+}
+
+.action__item {
+    padding: 0 8px 0 0;
+}
+
+.action-item-link {
+    text-decoration: none;
+    color: #ffffff;
+    background: #3f51b5;
+    padding: 0px 8px;
+    border-radius: 3px;
+    font-size: 11px;
+    text-align: center;
+    min-width: 70px;
+    display: block;
+}
+
+.headerCellValue {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.headerCellValue__sortingicon {
+    min-width: 20px;
+    cursor: pointer;
+    padding-left: 8px;
+}
+
+.crmGridActions {
+    padding: 1rem;
+    display: flex;
+    flex-wrap: wrap;
+    border-top: 0;
+    justify-content: center;
+}
+
+.circleButton__text {
+    text-decoration: none;
+    margin-top: 10px;
+    line-height: 18px;
+}
+
+.circleButton {
+    width: 80px;
+    text-align: center;
+    margin: 8px;
+    border-radius: 3px;
+    padding: 4px 12px;
+    text-decoration: none;
+    color: #3f51b5;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 8px;
+    border: 1px solid #ffffff;
+}
+
+.circleButton:hover {
+    border: 1px solid #3f51b5;
+}
+
+.circleButton__icon {
+    font-size: 18px;
+    margin-bottom: 0;
+    height: 46px;
+    width: 46px;
+    border: 2px solid #ccc;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 100%;
+}
+
+.crmGridFooter {
+    border: 1px solid #dddbda;
+    margin-top: -2px;
+    padding: 12px;
+    position: relative;
+    background: #fafaf9;
+}
+
+.abcFilter {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.abcFilter__item {
+    height: 26px;
+    background: #fff;
+    width: 26px;
+    border: 1px solid #ccc;
+    margin: 4px;
+    cursor: pointer;
+    border-radius: 3px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    font-weight: 600;
+}
+
+.abcFilter__item:hover {
+    border: 1px solid #3f51b5;
+    background: #3f51b5;
+    color: #fff;
+}
+
+.headerCellValue__content {
+    flex: 1;
+    white-space: pre;
+}
+
+.headerCellValue__group {
+    cursor: pointer;
+    margin-right: 12px;
+}
+
+tr:hover .resizeDiv {
+    opacity: 1;
+}
+
+.resizeDiv {
+    height: 30px;
+    top: 0;
+    bottom: 0;
+    border: 1px solid #dddbda;
+    width: 8px;
+    border-top: 0;
+    border-bottom: 0;
+    right: 0;
+    opacity: 0;
+    cursor: col-resize;
+    z-index: 20;
+}
+
+.resizeDiv:hover {
+    background: #2196f3;
+    border-color: #2196f3;
+}
+
+.resizeDiv.dragStart {
+    background: #2196f3;
+    border: 0;
+    cursor: move;
+    position: relative;
+}
+
+.growupRow {
+    display: flex;
+    align-items: center;
+}
+
+td.groupHeader {
+    background: #fafaf9;
+    cursor: pointer;
+}
+
+.groupHeader__icon {
+    margin-right: 12px;
+    cursor: pointer;
+}
+
+.headerCellValue__group {
+    cursor: pointer;
+    margin-right: 8px;
+    border: 1px solid transparent;
+    color: #000;
+    background: transparent;
+    min-width: 24px;
+    text-align: center;
+    border-radius: 3px;
+}
+
+.headerCellValue__group.isActive {
+    color: #2196f3;
+}
+
+.groupHeader__title {
+    font-weight: 700;
+    font-size: 13px;
+    cursor: pointer;
+}
+
+.groupHeaderCollection {
+    border-bottom: 1px solid #ddd;
+    display: flex;
+    padding: 4px 8px;
+}
+
+.groupHeader__item {
+    padding: 0 8px;
+}
+
+button.groupHeader-button {
+    border: 0;
+    background: #2196f3;
+    color: #fff;
+    height: 24px;
+    display: flex;
+    align-items: center;
+    padding: 0 12px;
+    border-radius: 4px;
+    text-transform: capitalize;
+}
+
+.buttonText {
+    margin-right: 12px;
+}
+
+span.buttonIcon {
+    cursor: pointer;
+}
+
+.grid-checkbox-label {
+    width: 18px;
+    height: 18px;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    background: #fff;
+    cursor: pointer;
+    margin: 5px 0 0 5px;
+    position: relative;
+}
+
+.grid-checkbox {
+    position: absolute;
+    opacity: 0;
+}
+
+.grid-checkbox:checked~.grid-checkbox-label {
+    background: #ffffff;
+    border: 1px solid #2196f3;
+}
+
+.grid-checkbox:checked~.grid-checkbox-label:after {
+    content: "";
+    position: absolute;
+    width: 10px;
+    height: 10px;
+    background: #2196f3;
+    left: 3px;
+    right: 0;
+    top: 3px;
+}
+.Email {
+    color: #2196F3;
+    text-decoration: underline;
+}
+
+
+.progressBar {
+    min-width: 100px;
+    height: 20px;
+    background: #ccc;
+    border-radius: 20px;
+    overflow: hidden;
+    position: relative;
+}
+.progressBarInner {
+    min-width: 34px;
+    background: #2196f3;
+    text-align: center;
+    font-size: 11px;
+}
+.profileImage {
+    width: 50px;
+    max-width: 50px;
+    height: 50px;
+    overflow: hidden;
+    border-radius: 100%;
+    margin: auto;
+}
+.profileImage img {
+    width: 100%;
+}
+
+@media all and (max-width:700px) {
+    table.crmGrid {
+        display: block !important;
+    }
+
+    thead {
+        width: 100%;
+        display: block;
+    }
+    .profileImage{
+        margin: 0;
+    }
+    thead tr th {
+        display: none;
+        border: 0;
+        border: 0 !important;
+    }
+
+    thead tr th:first-child {
+        display: block;
+        width: 100% !important;
+        max-width: 100% !important;
+        min-width: 0 !important;
+    }
+
+    .crmGrid tbody tr td {
+        border: 0;
+        display: flex;
+        position: relative;
+    }
+    table.crmGrid tr:hover td {
+        background: transparent;
+    }
+    table.crmGrid tr:nth-child(even) {
+        background: #fafaf9;
+    }
+    thead tr {
+        padding: 0 !important;
+    }
+    .crmGrid tbody tr td:before {
+        position: relative;
+        content: attr(data-attr);
+        /* font-weight: 700; */
+        color: #7d7070;
+        font-size: 13px;
+        width: 110px;
+        min-width: 110px;
+        /* display: block; */
+        padding-left: 12px;
+    }
+
+    table.crmGrid tr {
+        display: block;
+        display: block;
+        border-bottom: 1px solid #ddd;
+        padding: 16px 0;
+    }
+
+    tbody {
+        width: 100%;
+        display: block;
+    }
+}
+
+
+
+.customRow {
+    display: flex;
+    align-items: center;
+}
+.img {
+    margin-right: 30px;
+    max-width: 100px;
+}
+.img img {
+    max-width: 100px;
+}

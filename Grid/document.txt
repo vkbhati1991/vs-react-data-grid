@@ -1,0 +1,11 @@
+coloum fixed: not supported
+drag and drop for grouping : not supported -( will update in next version)
+
+grouping multiple level : supported
+sorting: supported
+select row: supported
+custom row: supported
+grid header show and hide : supported
+custom formaters: supported
+row count : supported
+column resize: supported
