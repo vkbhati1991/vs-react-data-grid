@@ -227,13 +227,25 @@ class Grid extends Component {
             rowRenderer
         };
 
+        const BodyMetaData = {
+            handleRowSelect: this.handleRowSelect,
+            setExpandbleRows: this.setExpandbleRows,
+            renderRows: this.state.rows,
+            actions: this.props.actions,
+            ...this.props
+        }
+
         return (
             <div className="tableContainer" ref={this.tableContainer}>
                 {this.state.groupByColumn.length > 0 && <ErrorContainer><GroupHeader {...HeaderMetaData} /></ErrorContainer>}
-                <table className="crmGrid">
-                    {showHeader && <ErrorContainer><GridHeader {...HeaderMetaData} /></ErrorContainer>}
-                    {rowCount >= 1 ? <ErrorContainer><GridBody handleRowSelect={this.handleRowSelect} setExpandbleRows={this.setExpandbleRows} renderRows={this.state.rows} {...this.props} /></ErrorContainer> : renderEmptyRows()}
-                </table>
+                <div className="table-view-port-wrapper">
+                    <div className="table-view-port">
+                        <table className={this.props.actions ? "crmGrid crmGrid-actions" : "crmGrid" }>
+                            {showHeader && <ErrorContainer><GridHeader {...HeaderMetaData} /></ErrorContainer>}
+                            {rowCount >= 1 ? <ErrorContainer><GridBody {...BodyMetaData} /></ErrorContainer> : renderEmptyRows()}
+                        </table>
+                    </div>
+                </div>
             </div>
         );
     }

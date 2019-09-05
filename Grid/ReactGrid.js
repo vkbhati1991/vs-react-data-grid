@@ -44,7 +44,9 @@ class ReactGrid extends Component {
             ])
         }),
         emptyRowsContainer: PropTypes.any,
-        rowKey: PropTypes.any
+        rowKey: PropTypes.any,
+        rowHeight: PropTypes.number,
+        actions: PropTypes.any
     }
 
     constructor(props) {
@@ -105,7 +107,9 @@ class ReactGrid extends Component {
             renderEmptyRows: this.renderEmptyRows,
             rowSelection: this.props.rowSelection,
             showHeader: this.props.showHeader,
-            rowRenderer: this.props.rowRenderer
+            rowRenderer: this.props.rowRenderer,
+            rowHeight: this.props.rowHeight,
+            actions: this.props.actions
         };
 
         return (

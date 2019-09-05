@@ -23,8 +23,8 @@ class HeaderRow extends Component {
 
         if (thArray && thArray.length > 2) {
             thArray.forEach(item => {
-                item.style.width = `${item.clientWidth}px`;
-                item.style.minWidth = `${item.clientWidth}px`;
+                item.style.width = `${item.clientWidth + 20}px`;
+                item.style.minWidth = `${item.clientWidth + 20}px`;
             });
         }
     }

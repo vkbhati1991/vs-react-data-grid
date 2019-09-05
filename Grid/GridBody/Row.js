@@ -2,12 +2,18 @@ import React, { Component } from "react";
 import PropTypes from "prop-types";
 import Cell from "./Cell";
 import CheckboxEditor from "../Editors/CheckboxEditor";
+import Actions from "../Formaters/Actions";
 
 class Row extends Component {
   constructor(props) {
     super(props);
 
     this.rowRef = React.createRef();
+    this.rHeight = 0;
+    this.state = {
+      rowOffset: null,
+      rowHeight: null
+    }
   }
 
   static displayName = "Row";
@@ -17,6 +23,22 @@ class Row extends Component {
     rowKey: PropTypes.any,
     rowSelection: PropTypes.object,
     columns: PropTypes.arrayOf(PropTypes.any)
+  }
+
+  componentDidMount() {
+    this.setState({
+      rowOffset: this.rowRef.current.offsetTop + this.props.rowIdxVal,
+      rowHeight: this.rowRef.current.clientHeight
+    });
+  }
+
+  componentDidUpdate(prevProps) {
+    if (prevProps.rowLength !== this.props.rowLength) {
+      this.setState({
+        rowOffset: this.rowRef.current.offsetTop
+      });
+    }
+
   }
 
   getCellValue = (key) => {
@@ -38,6 +60,8 @@ class Row extends Component {
       key: `${rowKey}${key}`,
       cellName: name,
       formatter,
+      rowHeight: this.state.rowHeight,
+      cellTopValue: this.state.rowOffset,
       ...column
     };
 
@@ -47,11 +71,12 @@ class Row extends Component {
 
   renderShowAllCheckBox = (rowSelection) => {
     if (rowSelection.showCheckbox) {
-      return <CheckboxEditor {...this.props} />;
+      return <CheckboxEditor rowHeight={this.state.rowHeight} cellTopValue={this.state.rowOffset} {...this.props} />;
     }
   }
 
   render() {
+
     return (
       <tr ref={this.rowRef}>
         {this.renderShowAllCheckBox(this.props.rowSelection)}
@@ -62,6 +87,7 @@ class Row extends Component {
             );
           })
         }
+        {this.props.actions && <Actions rowHeight={this.state.rowHeight} cellTopValue={this.state.rowOffset} />}
       </tr>
     );
   }

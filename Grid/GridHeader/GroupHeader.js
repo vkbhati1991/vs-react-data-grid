@@ -24,9 +24,9 @@ class GroupHeader extends React.PureComponent {
                     groupByColumn.map((g, idx) => {
                         return (
                             <div key={idx} className="groupHeader__item">
-                                <button className="groupHeader-button">
+                                <button className="groupHeader-button" onClick={() => { this.onUnGroupy({ cellKey: g.cellKey, cellName: g.cellName }); }}>
                                     <span className="buttonText">{g.cellName}</span>
-                                    <span className="buttonIcon" onClick={() => { this.onUnGroupy({ cellKey: g.cellKey, cellName: g.cellName }); }}><i className="fa fa-trash"></i></span>
+                                    <span className="buttonIcon"><i className="fa fa-trash"></i></span>
                                 </button>
                             </div>
                         );

@@ -19,11 +19,97 @@
     border-collapse: collapse;
     border-spacing: 0;
 }
+.tableWrapper {
+    position: relative;
+    width: 100%;
+    max-width: 100%;
+    border: 1px solid #dddbda;
+}
+.crmGrid tbody tr td.rowCheckbox + td {
+    padding-left: 50px;
+}
+
+.crmGrid tbody tr td.rowCheckbox {
+
+    position: absolute;
+    left: 0;
+    width: 50px;
+    /* margin-top: 1px; */
+    z-index: 10;
+    border: 0 !important;
+    
+}
+.checkbox-wrapper {
+    position: absolute;
+    left: 0;
+    right: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    top: 1px;
+    bottom: 1px;
+    background: #fff;
+}
+
+.grid-cell-value {
+    display: flex;
+    align-items: center;
+    padding: 0 8px;
+}
+.crmGrid thead tr th.gridHeaderCheckbox + th{
+    padding-left: 50px;
+}
+.crmGrid thead tr th.gridHeaderCheckbox{
+    height: 40px;
+    position: absolute;
+    left: 0;
+    width: 50px;
+    padding-top: 1px;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    border: 0;
+    justify-content: center;
+    min-width: 50px !important;
+}
+
+.crmGrid tbody tr td.gridActions {
+    position: absolute;
+    right: 0;
+    border: 0 !important;
+    width: 40px;
+    z-index: 20;
+    max-width: 40px;
+    min-width: 40px;
+}
+.gridActions-container {
+    position: relative;
+}
+.gridActionItem {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    background: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 20px;
+    cursor: pointer;
+}
+.crmGrid.crmGrid-actions tbody tr td:nth-last-child(2){
+    padding-right: 50px;
+}
 
 .tableContainer {
     width: 100%;
-    overflow: auto;
-    border: 1px solid #dddbda;
+    border: 1px solid #ccc;
+   
+}
+.table-view-port-wrapper {
+    position: relative;
+    width: 100%;
 }
 
 .crmGrid thead tr th {
@@ -39,6 +125,7 @@
     border-left: 0;
     border-top: 0;
     border-right: 0;
+    height: 30px;
 }
 
 .crmGrid thead tr th:last-child {
@@ -49,15 +136,28 @@
     background: #fff;
 }
 
+.grid-checkbox-container {
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    position: relative;
+}
+.growupRow {
+    height: 28px;
+    margin-left: 16px;
+}
+
 .crmGrid tbody tr td {
     border: 1px solid #dddbda;
-    padding: 4px 8px;
     font-size: 13px;
     text-transform: capitalize;
     text-align: left;
     line-height: 20px;
     border-left: 0;
     border-top: 0;
+    white-space: nowrap;
     border-right: 0;
 }
 
@@ -94,6 +194,7 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
+    height: 40px;
 }
 
 .headerCellValue__sortingicon {
@@ -182,8 +283,10 @@
 }
 
 .headerCellValue__content {
-    flex: 1;
-    white-space: pre;
+    white-space: nowrap;
+    /* min-width: 100%; */
+    text-align: left;
+    width: 100%;
 }
 
 .headerCellValue__group {
@@ -196,17 +299,14 @@ tr:hover .resizeDiv {
 }
 
 .resizeDiv {
-    height: 30px;
-    top: 0;
-    bottom: 0;
+    height: 40px;
+
     border: 1px solid #dddbda;
-    width: 8px;
-    border-top: 0;
-    border-bottom: 0;
-    right: 0;
+    width: 10px;
     opacity: 0;
     cursor: col-resize;
     z-index: 20;
+    position: relative;
 }
 
 .resizeDiv:hover {
@@ -217,7 +317,6 @@ tr:hover .resizeDiv {
 .resizeDiv.dragStart {
     background: #2196f3;
     border: 0;
-    cursor: move;
     position: relative;
 }
 
@@ -295,7 +394,7 @@ span.buttonIcon {
     border-radius: 3px;
     background: #fff;
     cursor: pointer;
-    margin: 5px 0 0 5px;
+    margin: 0;
     position: relative;
 }
 
@@ -340,9 +439,9 @@ span.buttonIcon {
     font-size: 11px;
 }
 .profileImage {
-    width: 50px;
-    max-width: 50px;
-    height: 50px;
+    width: 36px;
+    max-width: 36px;
+    height: 36px;
     overflow: hidden;
     border-radius: 100%;
     margin: auto;
@@ -427,4 +526,10 @@ span.buttonIcon {
 }
 .img img {
     max-width: 100px;
+}
+
+.table-view-port {
+    /* position: relative; */
+    width: 100%;
+    overflow: auto;
 }

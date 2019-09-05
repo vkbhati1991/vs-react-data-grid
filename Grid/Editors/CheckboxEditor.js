@@ -6,7 +6,9 @@ class CheckboxEditor extends Component {
     handleRowSelect: PropTypes.func,
     rowIdx: PropTypes.any,
     row: PropTypes.object,
-    rowSelection: PropTypes.object
+    rowSelection: PropTypes.object,
+    rowHeight: PropTypes.number,
+    cellTopValue: PropTypes.number
   };
 
   handleChange = () => {
@@ -17,17 +19,29 @@ class CheckboxEditor extends Component {
   }
 
   render() {
-    const { rowSelection, rowIdx } = this.props;
+    const { rowSelection, rowIdx, rowHeight, cellTopValue } = this.props;
     const indexes = rowSelection && rowSelection.selectBy && rowSelection.selectBy.indexes;
 
     const checked = indexes && indexes.findIndex(el => el === rowIdx) >= 0;
     const checkboxName = `checkbox${rowIdx}`;
-    
+
+    const cellStyle = {
+      minHeight: `${rowHeight}px`,
+      height: `${rowHeight}px`,
+      maxHeight: `${rowHeight}px`
+    }
+
+    const cellStyle2 = {
+      top: `${cellTopValue + 1}px`
+    }
+
     return (
-      <td>
-        <div className="grid-checkbox-container" >
-          <input id={checkboxName} className="grid-checkbox" type="checkbox" name={checkboxName} checked={checked} readOnly />
-          <label htmlFor={checkboxName} className="grid-checkbox-label" onClick={this.handleChange}></label>
+      <td className="rowCheckbox" style={cellStyle2}>
+        <div className="grid-checkbox-container" style={cellStyle}>
+          <div className="checkbox-wrapper">
+            <input id={checkboxName} className="grid-checkbox" type="checkbox" name={checkboxName} checked={checked} readOnly />
+            <label htmlFor={checkboxName} className="grid-checkbox-label" onClick={this.handleChange}></label>
+          </div>
         </div>
       </td>);
   }

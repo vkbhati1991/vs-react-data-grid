@@ -44,7 +44,8 @@ class GridRender extends Component {
         key: "id",
         name: "ID",
         color: "#2196f3",
-        formatter: "progress"
+        formatter: "progress",
+        isFreeze : true
       },
       {
         key: "avatar",
@@ -104,6 +105,7 @@ class GridRender extends Component {
 
     const rows = this.state.rows;
 
+
     // const RowRenderer = ({ ...rowInfo }) => {
     //   const { row } = rowInfo;
     //   return (
@@ -120,13 +122,18 @@ class GridRender extends Component {
     // }
 
     return (
-      <div>
-        <ReactGrid
+
+
+
+
+      <div> <ReactGrid
           columns={columns}
           rowGetter={i => rows[i]}
-          rowCount={10}
-         // rowRenderer={RowRenderer}
-            rowSelection={{
+          rowCount={20}
+          actions={true}
+          //rowHeight = {40}
+          // rowRenderer={RowRenderer}
+          rowSelection={{
             showCheckbox: true,
             onRowsSelected: this.onRowsSelected,
             onRowsDeSelected: this.onRowsDeSelected,

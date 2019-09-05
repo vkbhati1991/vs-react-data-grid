@@ -10,7 +10,6 @@ class RowsContainer extends Component {
     static propTypes = {
         rowGetter: PropTypes.oneOfType([PropTypes.array, PropTypes.func]).isRequired,
         rowsCount: PropTypes.number,
-        rowHeight: PropTypes.number,
         columnMetrics: PropTypes.object,
         columns: PropTypes.array,
         cellMetaData: PropTypes.object,
@@ -18,7 +17,8 @@ class RowsContainer extends Component {
         rowSelection: PropTypes.object,
         handleRowSelect: PropTypes.func,
         renderRows: PropTypes.array,
-        rowRenderer: PropTypes.func
+        rowRenderer: PropTypes.func,
+        rowHeight: PropTypes.number
     };
 
     static defaultProps = {
@@ -61,12 +61,12 @@ class RowsContainer extends Component {
 
         const { columnMetrics } = this.props;
         const { columns } = columnMetrics;
-        const { cellMetaData, setExpandbleRows, rowSelection, handleRowSelect, renderRows } = this.props;
-
+        const { cellMetaData, setExpandbleRows, rowSelection, handleRowSelect, renderRows, actions } = this.props;
+        const rowLength = renderRows.length;
         const renderRowsCollection = renderRows.map((r, idx) => {
-            const rowKey = `rowKey${idx}`;
+            const rowKey = r.id > -1 ? `rowKey${r && r.id}` : `rowKey${rowLength + idx}`;
             const rowIdx = rowKey;
-
+            const rowIdxVal = r.id > -1 ? r && r.id : rowLength + idx;
             return r && this.renderRow({
                 key: rowKey,
                 rowKey,
@@ -76,8 +76,10 @@ class RowsContainer extends Component {
                 setExpandbleRows,
                 rowSelection,
                 rowIdx,
-                handleRowSelect
-
+                handleRowSelect,
+                rowIdxVal,
+                rowLength,
+                actions
             });
         });
 

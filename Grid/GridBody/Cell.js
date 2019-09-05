@@ -44,10 +44,22 @@ class Cell extends Component {
     }
 
     render() {
-        const { bgColor, cellName } = this.props;
+        const { bgColor, cellName, rowHeight } = this.props;
+
+        const cellStyle = {
+            minHeight: `${rowHeight}px`,
+            height: `${rowHeight}px`,
+            maxHeight: `${rowHeight}px`
+        }
+
+        const cellStyle2 = {
+            backgroundColor: bgColor
+        }
 
         return (
-            <td data-attr={cellName} style={{ backgroundColor: bgColor }}>{this.setValue()}</td>
+            <td className="grid-cell" data-attr={cellName} style={cellStyle2}>
+                <div className="grid-cell-value" style={cellStyle}>{this.setValue()}</div>
+            </td>
         );
     }
 }

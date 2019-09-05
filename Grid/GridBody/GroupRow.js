@@ -17,7 +17,7 @@ class GroupRow extends Component {
         columns: PropTypes.arrayOf(PropTypes.any),
         rowSelection: PropTypes.object
     };
-
+    
     setExpandView = () => {
         const { row } = this.props;
         const { groupIdx } = row;

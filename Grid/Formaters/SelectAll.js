@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 
 const SelectAll = (props) => {
   return (
-    <th style={{ maxWidth: 50, minWidth: 50 }}>
+    <th className="gridHeaderCheckbox" style={{ maxWidth: 50, minWidth: 50 }}>
       <div className="grid-checkbox-container" >
         <input
           className="grid-checkbox"

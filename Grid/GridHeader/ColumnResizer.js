@@ -26,6 +26,7 @@ class ColumnResizer extends React.Component {
     }
 
     startDrag = (e) => {
+        //e.dataTransfer.setData("text", e.target.id);
         this.startPos = e.screenX;
         this.resizeHandler.current.classList.add("dragStart");
     }
@@ -40,18 +41,38 @@ class ColumnResizer extends React.Component {
         this.resizeHandler.current.classList.remove("dragStart");
     }
 
+    dragOver = (e) => {
+        e.preventDefault();
+        return false;
+    }
+
     getResizeHandlerPosition = (e) => {
         this.mouseMove = e.screenX;
         this.moveDiff = this.mouseMove - this.startPos;
         this.resizeHandler.current.style.transform = `translate(${this.moveDiff}px, 0)`;
     }
 
+    drop = (ev) => {
+        ev.preventDefault();
+    }
+
     render() {
         return (
-            <th ref={this.thRef} area-label={this.props.areaLabel}>
+            <th ref={this.thRef}
+                onDrop={this.drop}
+                onDragOver={this.dragOver}
+                area-label={this.props.areaLabel}
+            >
                 <div className="headerCellValue">
                     {this.props.children}
-                    <div className="resizeDiv" ref={this.resizeHandler} onDrag={this.getResizeHandlerPosition} onDragEnd={this.endDrag} onDragStart={this.startDrag}></div>
+                    <div
+                        className="resizeDiv"
+                        draggable="true"
+                        onDragStart={this.startDrag}
+                        ref={this.resizeHandler}
+                        onDrag={this.getResizeHandlerPosition}
+                        onDragEnd={this.endDrag}>
+                    </div>
                 </div>
             </th>
         );
