@@ -7,8 +7,7 @@ class CheckboxEditor extends Component {
     rowIdx: PropTypes.any,
     row: PropTypes.object,
     rowSelection: PropTypes.object,
-    rowHeight: PropTypes.number,
-    cellTopValue: PropTypes.number
+    rowHeight: PropTypes.number
   };
 
   handleChange = () => {
@@ -19,24 +18,20 @@ class CheckboxEditor extends Component {
   }
 
   render() {
-    const { rowSelection, rowIdx, rowHeight, cellTopValue } = this.props;
+    const { rowSelection, rowIdx, rowHeight } = this.props;
     const indexes = rowSelection && rowSelection.selectBy && rowSelection.selectBy.indexes;
 
     const checked = indexes && indexes.findIndex(el => el === rowIdx) >= 0;
     const checkboxName = `checkbox${rowIdx}`;
 
     const cellStyle = {
-      minHeight: `${rowHeight}px`,
-      height: `${rowHeight}px`,
-      maxHeight: `${rowHeight}px`
-    }
-
-    const cellStyle2 = {
-      top: `${cellTopValue + 1}px`
+      minHeight: `${rowHeight - 4}px`,
+      height: `${rowHeight - 4}px`,
+      maxHeight: `${rowHeight - 4}px`
     }
 
     return (
-      <td className="rowCheckbox" style={cellStyle2}>
+      <td className="rowCheckbox">
         <div className="grid-checkbox-container" style={cellStyle}>
           <div className="checkbox-wrapper">
             <input id={checkboxName} className="grid-checkbox" type="checkbox" name={checkboxName} checked={checked} readOnly />

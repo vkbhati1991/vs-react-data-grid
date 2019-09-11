@@ -26,6 +26,7 @@ class GroupRow extends Component {
             isExpandView: !this.state.isExpandView
         });
     }
+    
     render() {
         const GroupWrapper = Fragment;
         const { columns, row, rowSelection } = this.props;

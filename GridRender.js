@@ -129,9 +129,9 @@ class GridRender extends Component {
       <div> <ReactGrid
           columns={columns}
           rowGetter={i => rows[i]}
-          rowCount={20}
+          rowCount={10}
           actions={true}
-          //rowHeight = {40}
+          rowHeight = {40}
           // rowRenderer={RowRenderer}
           rowSelection={{
             showCheckbox: true,

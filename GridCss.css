@@ -9,9 +9,10 @@
 }
 
 .crmGridContainer {
-    padding: 20px;
+    padding: 0;
     width: 100%;
     overflow: auto;
+    background: #fff;
 }
 
 .crmGrid {
@@ -89,7 +90,7 @@
     position: absolute;
     left: 0;
     right: 0;
-    top: 0;
+    top: 1px;
     bottom: 0;
     background: #fff;
     display: flex;
@@ -165,9 +166,7 @@
     border-right: 0;
 }
 
-.crmGrid tbody tr:hover td {
-    background: #f9f9f9;
-}
+
 
 .action-hover {
     display: flex;
@@ -195,6 +194,7 @@
     align-items: center;
     justify-content: space-between;
     height: 40px;
+    user-select: none;
 }
 
 .headerCellValue__sortingicon {
@@ -294,17 +294,31 @@
     margin-right: 12px;
 }
 
-tr:hover .resizeDiv {
+th:hover .resizeDiv {
     opacity: 1;
+    z-index: 200;
 }
 
+.resizeDiv:after {
+    content: "";
+    width: 1px;
+    height: 2000rem;
+    background: #2196f3;
+    position: absolute;
+    right: 0;
+    top: 0;
+    display: none;
+}
+.resizeDiv:hover::after{
+    display: block;
+}
 .resizeDiv {
     height: 40px;
 
     border: 1px solid #dddbda;
     width: 10px;
     opacity: 0;
-    cursor: col-resize;
+    cursor: move;
     z-index: 20;
     position: relative;
 }

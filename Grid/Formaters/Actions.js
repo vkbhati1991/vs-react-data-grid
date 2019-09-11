@@ -2,19 +2,15 @@ import React from "react";
 import PropTypes from "prop-types";
 
 const Actions = (props) => {
-  const { rowHeight, cellTopValue } = props;
+  const { rowHeight } = props;
   const cellStyle = {
-    minHeight: `${rowHeight}px`,
-    height: `${rowHeight}px`,
-    maxHeight: `${rowHeight}px`
-  }
-
-  const cellStyle2 = {
-    top: `${cellTopValue + 1}px`
+    minHeight: `${rowHeight - 4}px`,
+    height: `${rowHeight - 4}px`,
+    maxHeight: `${rowHeight - 4}px`
   }
 
   return (
-    <td className="gridActions" style={cellStyle2}>
+    <td className="gridActions">
       <div className="gridActions-container" style={cellStyle}>
         <div className="gridActionItem">
           <i className="fa fa-ellipsis-h"></i>

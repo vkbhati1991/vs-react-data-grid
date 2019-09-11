@@ -1,3 +1,4 @@
+
 import React from "react";
 import PropTypes from "prop-types";
 
@@ -6,13 +7,17 @@ class ColumnResizer extends React.Component {
     constructor(props) {
         super(props);
 
-        this.dragging = false;
-        this.startPos = 0;
-        this.endPos = 0;
-        this.mouseMove = 0;
-        this.width = 0;
+        this.state = {
+            dragging: false,
+            startPos: 0,
+            endPos: 0,
+            moveDiff: 0,
+            width: 0,
+
+        }
         this.thRef = React.createRef();
         this.resizeHandler = React.createRef();
+        this.moveDiff = 0;
     }
 
     static defaultProps = {
@@ -25,53 +30,79 @@ class ColumnResizer extends React.Component {
         children: PropTypes.any
     }
 
-    startDrag = (e) => {
-        //e.dataTransfer.setData("text", e.target.id);
-        this.startPos = e.screenX;
-        this.resizeHandler.current.classList.add("dragStart");
+    componentDidMount() {
+        this.setState({
+            width: this.thRef.current.clientWidth
+        }, () => {
+            this.thRef.current.style.width = `${this.state.width}px`;
+            this.thRef.current.style.minWidth = `${this.state.width}px`;
+        });
+
     }
 
-    endDrag = (e) => {
-        this.endPos = e.screenX;
-        this.moveDiff = this.endPos - this.startPos;
-        this.width = this.thRef.current.clientWidth;
-        this.resizeHandler.current.style.transform = "translate(0, 0)";
-        this.thRef.current.style.width = `${this.moveDiff + this.width}px`;
-        this.thRef.current.style.minWidth = `${this.moveDiff + this.width}px`;
-        this.resizeHandler.current.classList.remove("dragStart");
+    handleMouseMove = (e) => {
+        if (this.state.dragging) {
+
+            this.moveDiff = e.pageX - this.state.startPos
+            this.resizeHandler.current.style.transform = `translate(${this.moveDiff}px, 0)`;
+        }
+
     }
 
-    dragOver = (e) => {
-        e.preventDefault();
-        return false;
+    handleMouseDown = (e) => {
+        if (this.state.dragging === false) {
+            this.thRef.current.parentNode.addEventListener("mousemove", this.handleMouseMove);
+            this.thRef.current.parentNode.addEventListener("mouseleave", this.handleMouseOut);
+            this.resizeHandler.current.addEventListener("mouseup", this.handleMouseUp);
+            this.setState({
+                startPos: e.pageX,
+                dragging: true
+            });
+            this.moveDiff = 0;
+        }
     }
 
-    getResizeHandlerPosition = (e) => {
-        this.mouseMove = e.screenX;
-        this.moveDiff = this.mouseMove - this.startPos;
-        this.resizeHandler.current.style.transform = `translate(${this.moveDiff}px, 0)`;
+    handleMouseUp = () => {
+        if (this.state.dragging) {
+            const cellWidth = this.state.width + this.moveDiff;
+            this.resizeHandler.current.style.transform = `translate(${0}px, 0)`;
+            this.thRef.current.style.width = `${cellWidth}px`;
+            this.thRef.current.style.minWidth = `${cellWidth}px`;
+            this.setState({
+                width: cellWidth,
+                dragging: false
+            });
+            this.moveDiff = 0;
+        }
+
     }
 
-    drop = (ev) => {
-        ev.preventDefault();
+
+    handleMouseOut = () => {
+        this.thRef.current.parentNode.removeEventListener("mousemove", this.handleMouseMove);
+        this.thRef.current.parentNode.removeEventListener("mouseleave", this.trMouseUp);
+        this.resizeHandler.current.removeEventListener("mouseup", this.handleMouseUp);
+        if (this.state.dragging) {
+            this.resizeHandler.current.style.transform = `translate(${0}px, 0)`;
+            this.thRef.current.style.width = `${this.state.width}px`;
+            this.thRef.current.style.minWidth = `${this.state.width}px`;
+            this.setState({
+                dragging: false
+            });
+            this.moveDiff = 0;
+        }
     }
 
     render() {
         return (
-            <th ref={this.thRef}
-                onDrop={this.drop}
-                onDragOver={this.dragOver}
-                area-label={this.props.areaLabel}
-            >
+            <th ref={this.thRef} area-label={this.props.areaLabel}>
                 <div className="headerCellValue">
                     {this.props.children}
                     <div
                         className="resizeDiv"
-                        draggable="true"
-                        onDragStart={this.startDrag}
-                        ref={this.resizeHandler}
-                        onDrag={this.getResizeHandlerPosition}
-                        onDragEnd={this.endDrag}>
+                        onMouseDown={this.handleMouseDown}
+                        onMouseUp={this.handleMouseUp}
+                        ref={this.resizeHandler}>
                     </div>
                 </div>
             </th>

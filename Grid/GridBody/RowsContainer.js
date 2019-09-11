@@ -61,12 +61,14 @@ class RowsContainer extends Component {
 
         const { columnMetrics } = this.props;
         const { columns } = columnMetrics;
-        const { cellMetaData, setExpandbleRows, rowSelection, handleRowSelect, renderRows, actions } = this.props;
+        const { cellMetaData, setExpandbleRows, rowSelection, handleRowSelect, renderRows, rowHeight, actions } = this.props;
         const rowLength = renderRows.length;
         const renderRowsCollection = renderRows.map((r, idx) => {
-            const rowKey = r.id > -1 ? `rowKey${r && r.id}` : `rowKey${rowLength + idx}`;
+            const rowId = r && r.id;
+            const rowKey = rowId > -1 ? `rowKey${rowId}` : `rowKey${rowLength + idx}`;
             const rowIdx = rowKey;
-            const rowIdxVal = r.id > -1 ? r && r.id : rowLength + idx;
+            const rowIdxVal = rowId > -1 ? rowId : rowLength + idx;
+
             return r && this.renderRow({
                 key: rowKey,
                 rowKey,
@@ -79,6 +81,7 @@ class RowsContainer extends Component {
                 handleRowSelect,
                 rowIdxVal,
                 rowLength,
+                rowHeight,
                 actions
             });
         });

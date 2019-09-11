@@ -25,22 +25,6 @@ class Row extends Component {
     columns: PropTypes.arrayOf(PropTypes.any)
   }
 
-  componentDidMount() {
-    this.setState({
-      rowOffset: this.rowRef.current.offsetTop + this.props.rowIdxVal,
-      rowHeight: this.rowRef.current.clientHeight
-    });
-  }
-
-  componentDidUpdate(prevProps) {
-    if (prevProps.rowLength !== this.props.rowLength) {
-      this.setState({
-        rowOffset: this.rowRef.current.offsetTop
-      });
-    }
-
-  }
-
   getCellValue = (key) => {
 
     return this.props.row[key];
@@ -71,7 +55,7 @@ class Row extends Component {
 
   renderShowAllCheckBox = (rowSelection) => {
     if (rowSelection.showCheckbox) {
-      return <CheckboxEditor rowHeight={this.state.rowHeight} cellTopValue={this.state.rowOffset} {...this.props} />;
+      return <CheckboxEditor rowHeight={this.props.rowHeight} {...this.props} />;
     }
   }
 
@@ -87,7 +71,7 @@ class Row extends Component {
             );
           })
         }
-        {this.props.actions && <Actions rowHeight={this.state.rowHeight} cellTopValue={this.state.rowOffset} />}
+        {this.props.actions && <Actions rowHeight={this.props.rowHeight} cellTopValue={this.state.rowOffset} />}
       </tr>
     );
   }
