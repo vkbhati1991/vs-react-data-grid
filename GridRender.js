@@ -129,7 +129,7 @@ class GridRender extends Component {
       <div> <ReactGrid
           columns={columns}
           rowGetter={i => rows[i]}
-          rowCount={10}
+          rowCount={15}
           actions={true}
           rowHeight = {40}
           // rowRenderer={RowRenderer}

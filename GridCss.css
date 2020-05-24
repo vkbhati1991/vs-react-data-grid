@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css?family=Muli:300,400,600,700');
+
 
 * {
     box-sizing: border-box;
@@ -19,6 +19,7 @@
     width: 100%;
     border-collapse: collapse;
     border-spacing: 0;
+    overflow: hidden;
 }
 .tableWrapper {
     position: relative;
@@ -61,7 +62,7 @@
     padding-left: 50px;
 }
 .crmGrid thead tr th.gridHeaderCheckbox{
-    height: 40px;
+    height: 30px;
     position: absolute;
     left: 0;
     width: 50px;
@@ -105,7 +106,6 @@
 
 .tableContainer {
     width: 100%;
-    border: 1px solid #ccc;
    
 }
 .table-view-port-wrapper {
@@ -193,8 +193,8 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-    height: 40px;
-    user-select: none;
+    height: 30px;
+   
 }
 
 .headerCellValue__sortingicon {
@@ -287,6 +287,7 @@
     /* min-width: 100%; */
     text-align: left;
     width: 100%;
+    user-select: none;
 }
 
 .headerCellValue__group {
@@ -362,6 +363,7 @@ td.groupHeader {
 
 .headerCellValue__group.isActive {
     color: #2196f3;
+    pointer-events: none;
 }
 
 .groupHeader__title {
@@ -374,6 +376,7 @@ td.groupHeader {
     border-bottom: 1px solid #ddd;
     display: flex;
     padding: 4px 8px;
+    height: 40px;
 }
 
 .groupHeader__item {
@@ -547,3 +550,20 @@ span.buttonIcon {
     width: 100%;
     overflow: auto;
 }
+.groupHeaderDragArea {
+    display: flex;
+    align-items: center;
+    display: inline-flex;
+    min-width: 400px;
+    border-radius: 30px;
+    border: 1px dashed #ddd;
+    padding: 0 1rem;
+    color: #ccc;
+}
+[draggable=true] {
+    -khtml-user-drag: element;
+  }
+
+  [draggable=true] {
+    -khtml-user-drag: element;
+  }

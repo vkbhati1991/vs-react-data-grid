@@ -12,6 +12,9 @@ class SimpleCellFormatter extends Component {
     }
   
     render() {
+      if(Array.isArray(this.props.value)){
+        return null;
+      }
       return (<div title={this.props.value}>{this.props.value}</div>);
     }
   }

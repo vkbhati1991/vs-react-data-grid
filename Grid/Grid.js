@@ -224,7 +224,7 @@ class Grid extends Component {
             groupByColumn: this.state.groupByColumn,
             rowSelection,
             selectAllComponent: this.selectAllComponent,
-            rowRenderer
+            rowRenderer,
         };
 
         const BodyMetaData = {
@@ -237,10 +237,11 @@ class Grid extends Component {
 
         return (
             <div className="tableContainer" ref={this.tableContainer}>
-                {this.state.groupByColumn.length > 0 && <ErrorContainer><GroupHeader {...HeaderMetaData} /></ErrorContainer>}
+                {/* {this.state.groupByColumn.length > 0 && <ErrorContainer><GroupHeader {...HeaderMetaData} /></ErrorContainer>} */}
+                {<ErrorContainer><GroupHeader {...HeaderMetaData} /></ErrorContainer>}
                 <div className="table-view-port-wrapper">
                     <div className="table-view-port">
-                        <table className={this.props.actions ? "crmGrid crmGrid-actions" : "crmGrid" }>
+                        <table className={this.props.actions ? "crmGrid crmGrid-actions" : "crmGrid"}>
                             {showHeader && <ErrorContainer><GridHeader {...HeaderMetaData} /></ErrorContainer>}
                             {rowCount >= 1 ? <ErrorContainer><GridBody {...BodyMetaData} /></ErrorContainer> : renderEmptyRows()}
                         </table>

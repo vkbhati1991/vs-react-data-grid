@@ -4,7 +4,7 @@ import SimpleCellFormatter from "../Formaters/SimpleCellFormatter";
 import EmailCellFormatter from "../Formaters/EmailCellFormatter";
 import LinkCellFormatter from "../Formaters/LinkCellFormatter";
 import ProgressBarCellFormatter from "../Formaters/ProgressBarCellFormatter";
-import ImageCellFormatter from "../Formaters/ImageCellFormatter";
+import ActionsCellFormatter from "../../../../utils/ActionsCellFormatter";
 
 class Cell extends Component {
 
@@ -27,8 +27,9 @@ class Cell extends Component {
                 return <LinkCellFormatter color={color} value={value} />;
             case "progress":
                 return <ProgressBarCellFormatter color={color} value={value} />;
-            case "image":
-                return <ImageCellFormatter value={value} />;
+            case "actions":
+                return <ActionsCellFormatter value={value} />;
+                
             default:
                 return <Formatter value={value} />;
         }

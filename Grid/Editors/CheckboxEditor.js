@@ -25,9 +25,9 @@ class CheckboxEditor extends Component {
     const checkboxName = `checkbox${rowIdx}`;
 
     const cellStyle = {
-      minHeight: `${rowHeight - 4}px`,
-      height: `${rowHeight - 4}px`,
-      maxHeight: `${rowHeight - 4}px`
+      minHeight: `${rowHeight}px`,
+      height: `${rowHeight}px`,
+      maxHeight: `${rowHeight }px`
     }
 
     return (

@@ -44,7 +44,7 @@ class Row extends Component {
       key: `${rowKey}${key}`,
       cellName: name,
       formatter,
-      rowHeight: this.state.rowHeight,
+      rowHeight: this.props.rowHeight,
       cellTopValue: this.state.rowOffset,
       ...column
     };

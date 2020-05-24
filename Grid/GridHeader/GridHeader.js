@@ -1,6 +1,5 @@
 import React from "react";
 import HeaderRow from "./HeaderRow";
-
 class GridHeader extends React.PureComponent {
 
     static displayName = "Grid Header";

@@ -25,6 +25,10 @@ class HeaderCell extends Component {
         this.props.getGroupedRows(groupBy);
     }
 
+    onGroupByDrag = (groupBy) => {
+        window.groupByObj = groupBy;
+    }
+
     onSort = () => {
         this.setState({
             onAssendingSort: !this.state.onAssendingSort
@@ -51,11 +55,17 @@ class HeaderCell extends Component {
 
         return (
             <ColumnResizer areaLabel={cell.name}>
-                {
+                {/* {
                     (isGroupIcon && !rowRenderer) && <div className={getHeaderCellClass}
                         onClick={() => { this.onGroupBy({ cellKey: cell.key, cellName: cell.name }); }}>
                         <i className="fa fa-group"></i>
                     </div>
+                } */}
+                {
+                    (isGroupIcon && !rowRenderer) && <a draggable="true" href="/" className={getHeaderCellClass}
+                        onDragStart={() => { this.onGroupByDrag({ cellKey: cell.key, cellName: cell.name }); }}>
+                        <i className="fa fa-group"></i>
+                    </a>
                 }
                 <div className="headerCellValue__content" onClick={setSortable && this.onSort}>
                     {cell.name}
